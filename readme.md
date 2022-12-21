@@ -40,7 +40,7 @@ A continuación, se te deja un log de los cambios completos que se han realizado
 10. Reconfigurar las rutas de "getCourse" y "createCourse" para contar con las políticas ["PUBLIC"] y ["TEACHER"] respectivamente.
 
 11. Se crea el servicio de mailing en la carpeta services y se agregan las variables MAILING_USER, MAILING_SERVICE, MAILING_PASSWORD respectivamente.
-12. 
+12. Se utiliza el servicio de mailing cuando el usuario se ha registrado a algún curso.
 ¡Hemos terminado!
 
 Te invito a que repases con detalle estos pasos para que puedas evaluar tus propios tiempos de ejecución de cada paso, al final, te servirá para qué partes ir más aceleradas, en cuales puedes tomar más tiempo o qué codigos recomiendas ya tener hechos desde el inicio de la clase (todo es un malabar de tiempos en el cual tú eres el dueño).
