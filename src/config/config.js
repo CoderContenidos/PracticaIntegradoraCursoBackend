@@ -9,9 +9,7 @@ export default {
         PASSWORD: process.env.MAILING_PASSWORD
     },
     mongo:{
-        USER : process.env.MONGO_USER,
-        PWD: process.env.MONGO_PASSWORD,
-        DB: process.env.MONGO_DATABASE
+        URL:process.env.MONGO_URL
     },
     jwt: {
         COOKIE: process.env.JWT_COOKIE,

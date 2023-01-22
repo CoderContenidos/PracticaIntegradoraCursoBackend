@@ -15,7 +15,7 @@ import config from './config/config.js';
 
 const app = express();
 const PORT = 8080;
-const connection = mongoose.connect(`mongodb+srv://${config.mongo.USER}:${config.mongo.PWD}@codercluster.w5adegs.mongodb.net/${config.mongo.DB}?retryWrites=true&w=majority`)
+const connection = mongoose.connect(config.mongo.URL)
 
 /**
  * Template engine
