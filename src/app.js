@@ -12,10 +12,29 @@ import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import cookieParser from 'cookie-parser';
 import config from './config/config.js';
+import addLogger from './middleware/logger.middleware.js';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express';
 
 const app = express();
 const PORT = 8080;
-const connection = mongoose.connect(`mongodb+srv://${config.mongo.USER}:${config.mongo.PWD}@codercluster.w5adegs.mongodb.net/${config.mongo.DB}?retryWrites=true&w=majority`)
+const connection = mongoose.connect(config.mongo.URL)
+
+/**
+ * Swagger config
+ */
+
+ const swaggerOptions = {
+    definition: {
+        openapi:'3.0.1',
+        info: {
+            title:"API Práctica integradora",
+            description:"Documentación sobre la integración actual"
+        }
+    },
+    apis:[`${__dirname}/docs/**/*.yaml`]
+}
+const specs = swaggerJsdoc(swaggerOptions);
 
 /**
  * Template engine
@@ -34,6 +53,8 @@ app.use(express.urlencoded({extended:true}));
 initializePassport();
 app.use(passport.initialize());
 app.use(cookieParser());
+app.use(addLogger);
+app.use('/api-docs',swaggerUiExpress.serve,swaggerUiExpress.setup(specs))
 
 app.use('/',viewsRouter)
 app.use('/api/users',usersRouter);
